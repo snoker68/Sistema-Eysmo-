@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from datetime import datetime
-import Iniciar
+from Iniciar import MenuPrincipal
 
 class TelaCadastro:
     def __init__(self, master, cadastro):
@@ -9,14 +9,13 @@ class TelaCadastro:
         self.cadastro = cadastro
         self.frame = tk.Frame(master)
         self.frame.pack()
-
-        #self.tela_cadastro = TelaCadastro(self.master, self.cadastro, self.menu_principal)
+        
 
         # Botões principais
         tk.Button(self.frame, text="Cadastrar", font=("Arial", 14), command=self.mostrar_campos).grid(row=0, column=0, pady=10, padx=10)
         tk.Button(self.frame, text="Deletar", font=("Arial", 14), command=self.deletar_selecionado).grid(row=0, column=1, pady=10, padx=10)
         #tk.Button(self.frame, text="Editar", font=("Arial", 14), command=self.editar_selecionado).grid(row=0, column=2, pady=10, padx=10)
-        #tk.Button(self.frame, text="Voltar Menu pricipal", font=("Arial", 14), command=self.voltar_menu).grid(row=0, column=2, pady=10, padx=10)
+        tk.Button(self.frame, text="Voltar Menu pricipal", font=("Arial", 14), command=self.voltar_menu).grid(row=0, column=2, pady=10, padx=10)
 
         # Listbox para exibir registros
         self.lista_frame = tk.Frame(self.frame)
@@ -40,8 +39,8 @@ class TelaCadastro:
         self.atualizar_lista()
 
     def voltar_menu(self):
-        Iniciar.MenuPrincipal(self.master)
-        self.master.destroy()
+        MenuPrincipal(self.master)
+        self.frame.destroy()
 
     def atualizar_lista(self):
         """Atualiza a lista de registros exibidos."""
